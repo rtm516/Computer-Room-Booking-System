@@ -1,0 +1,187 @@
+<%- include("inc/header"); %>
+<% if ((typeof room == 'undefined') || (room == "") || (room == 0)) { %>
+<div class="container">
+	<h3>Error: No room selected</h3>
+</div>
+<% }else if ((typeof lessons == 'undefined')) { %>
+<div class="container">
+	<h3>Error: No lessons found</h3>
+</div>
+<% }else{ %>
+<% var lessonsSorted = {}; %>
+<% for(var i=0; i<lessons.length; i++) { %>
+	<% var lesson = lessons[i]; %>
+	<% var date = new Date(); %>
+	<% date.setTime(lesson.date); %>
+	<% lessonsSorted[date.getDay()] = lessonsSorted[date.getDay()] || {}; %>
+	<% lessonsSorted[date.getDay()][lesson.lesson] = lesson; %>
+<% } %>
+<style type="text/css">
+#firstRow {
+	border: 0px;
+	font-weight: bold;
+}
+#firstCell {
+	border: 0px;
+}
+.lessonTitle {
+	font-weight: bold;
+	line-height: 3;
+	text-align: center;
+}
+.firstCellRow {
+	border-top: 1px solid black;
+}
+.row {
+	border-top: 1px solid black;
+	display: flex;
+}
+#lastRow {
+	border-bottom: 1px solid black;
+}
+.col-xs-2 {
+	border-left: 1px solid black;
+}
+.endRow {
+	border-right: 1px solid black;
+}
+h2 {
+	margin-top:0px;
+}
+</style>
+<div class="container">
+	<h2><%- roomName %>:</h2>
+	<a class="btn btn-default" href="/timetable/<%- room %>/<%- week - 1 %>" style="float:left;"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+	<a class="btn btn-default" href="/timetable/<%- room %>/<%- week - -1 %>" style="float:right;"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+	<center>Week start: <%- weekStart %><% if (week == 0) {%> (current)<%}%></center>
+	<br>
+	<div style="width:100%;display:table; border-collapse:collapse;">
+		<div class="row" id="firstRow">
+			<div class="col-xs-2" id="firstCell"></div>
+			<div class="col-xs-2 firstCellRow">
+				Monday
+			</div>
+			<div class="col-xs-2 firstCellRow">
+				Tuesday
+			</div>
+			<div class="col-xs-2 firstCellRow">
+				Wednesday
+			</div>
+			<div class="col-xs-2 firstCellRow">
+				Thursday
+			</div>
+			<div class="col-xs-2 firstCellRow endRow">
+				Friday
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 lessonTitle">
+				Lesson 1
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 1, lesson: 1, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 2, lesson: 1, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 3, lesson: 1, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 4, lesson: 1, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 endRow bookBtnPar">
+				<%- include("inc/booking_btn", {day: 5, lesson: 1, lessonsSorted: lessonsSorted}); %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 lessonTitle">
+				Lesson 2
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 1, lesson: 2, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 2, lesson: 2, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 3, lesson: 2, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 4, lesson: 2, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 endRow bookBtnPar">
+				<%- include("inc/booking_btn", {day: 5, lesson: 2, lessonsSorted: lessonsSorted}); %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 lessonTitle">
+				Lesson 3
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 1, lesson: 3, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 2, lesson: 3, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 3, lesson: 3, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 4, lesson: 3, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 endRow bookBtnPar">
+				<%- include("inc/booking_btn", {day: 5, lesson: 3, lessonsSorted: lessonsSorted}); %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 lessonTitle">
+				Lesson 4
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 1, lesson: 4, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 2, lesson: 4, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 3, lesson: 4, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 4, lesson: 4, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 endRow bookBtnPar">
+				<%- include("inc/booking_btn", {day: 5, lesson: 4, lessonsSorted: lessonsSorted}); %>
+			</div>
+		</div>
+		<div class="row" id="lastRow">
+			<div class="col-xs-2 lessonTitle">
+				Lesson 5
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 1, lesson: 5, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 2, lesson: 5, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 3, lesson: 5, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 bookBtnPar">
+				<%- include("inc/booking_btn", {day: 4, lesson: 5, lessonsSorted: lessonsSorted}); %>
+			</div>
+			<div class="col-xs-2 endRow bookBtnPar">
+				<%- include("inc/booking_btn", {day: 5, lesson: 5, lessonsSorted: lessonsSorted}); %>
+			</div>
+		</div>
+	</div>
+	
+	<% if (user.admin && user.admin == 1) { %>
+	<br>
+	<div class="pull-right">
+		<a class="btn btn-success" href="/add/booking/<%- room %>">Add booking <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+	</div>
+	<% } %>
+</div>
+<% } %>
+<%- include("inc/footer"); %>

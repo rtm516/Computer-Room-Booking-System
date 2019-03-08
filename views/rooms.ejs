@@ -1,0 +1,38 @@
+<%- include("inc/header"); %>
+<div class="container">
+	<div class="row">
+		<% var column = 0; %>
+		<% for(var i=0; i<rooms.length; i++) { %>
+			<% var room = rooms[i]; %>
+			<% column += 1; %>
+			<div class="col-xs-3">
+				<center>
+					<span style="width:75%;">
+						<a class="btn btn-default btn-block" href="/timetable/<%- room.id %>">
+							<img src="/img/computer_room.png" alt="Computer room" style="width:100%;height:auto">
+							<br>
+							<%- room.name %> (<%- room.capacity %>-PCs)
+						</a>
+					</span>
+				</center>
+			</div>
+
+			<% if (column >= 4) { %>
+				<% column = 0; %>
+				</div>
+				<br>
+				<div class="row">
+			<% } %>
+		<% } %>
+	</div>
+	<% if (user.admin && user.admin == 1) { %>
+	<br>
+	<div class="pull-right">
+		<% if (rooms.length > 1) { %>
+			<a class="btn btn-danger" href="/remove/room">Remove room <i class="fa fa-minus-circle" aria-hidden="true"></i></a>
+		<% } %>
+		<a class="btn btn-success" href="/add/room">Add room <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+	</div>
+	<% } %>
+</div>
+<%- include("inc/footer"); %>

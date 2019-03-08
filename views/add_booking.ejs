@@ -1,0 +1,44 @@
+<%- include("inc/header"); %>
+<div class="container">
+	<h2 style="margin-top:0;">New booking:</h2>
+	<form id="addBookingForm">
+		<div class="form-group">
+			<label for="inputTeacher">Teacher</label>
+			<select class="form-control" id="inputTeacher" name="teacher">
+				<% for(var i=0; i<teachers.length; i++) { %>
+					<% var teacher = teachers[i]; %>
+					<option value="<%- teacher.id %>"><%- teacher.title %> <%- teacher.fName %> <%- teacher.lName %></option>
+				<% } %>
+			</select>
+		</div>		
+		<div class="form-group">
+			<label for="inputSize">Class size</label>
+			<input type="number" class="form-control" id="inputSize" placeholder="13" min="1" max="100" name="size">
+		</div>
+		<div class="form-group">
+			<label for="inputRoom">Room</label>
+			<select class="form-control" id="inputRoom" name="room">
+				<% for(var i=0; i<rooms.length; i++) { %>
+					<% var room = rooms[i]; %>
+					<option value="<%- room.id %>"<% if (roomID != -1 && roomID == room.id){%> selected<%}%>><%- room.name %></option>
+				<% } %>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="inputDate">Date</label>
+			<input type="date" class="form-control" id="inputDate" name="date" min="<%- date.y %>-<%- date.m %>-<%- date.d %>" value="<%- date.y %>-<%- date.m %>-<%- date.d %>">
+		</div>
+		<div class="form-group">
+			<label for="inputLesson">Lesson</label>
+			<select class="form-control" id="inputLesson" name="lesson">
+				<option value="1">Period 1</option>
+				<option value="2">Period 2</option>
+				<option value="3">Period 3</option>
+				<option value="4">Period 4</option>
+				<option value="5">Period 5</option>
+			</select>
+		</div>
+		<button id="submit" type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>
+<%- include("inc/footer"); %>

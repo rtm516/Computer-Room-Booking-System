@@ -1,0 +1,21 @@
+<%- include("inc/header"); %>
+<div class="container">
+	<h2 style="margin-top:0;">Edit teacher:</h2>
+	<form id="editTeacherForm">
+		<div class="form-group">
+			<label for="inputTitle">Title</label>
+			<input type="text" class="form-control" id="inputTitle" placeholder="Mr" maxlength="32" name="title" value="<%- teacher.title %>">
+		</div>
+		<div class="form-group">
+			<label for="inputFName">First name</label>
+			<input type="text" class="form-control" id="inputFName" placeholder="Norman" maxlength="32" name="fName" value="<%- teacher.fName %>">
+		</div>
+		<div class="form-group">
+			<label for="inputLName">Last name</label>
+			<input type="text" class="form-control" id="inputLName" placeholder="Nobody" maxlength="32" name="lName" value="<%- teacher.lName %>">
+		</div>
+		<input type="hidden" name="id" value="<%- teacher.id %>">
+		<button id="submit" type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>
+<%- include("inc/footer"); %>

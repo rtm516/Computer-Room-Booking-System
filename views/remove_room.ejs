@@ -1,0 +1,17 @@
+<%- include("inc/header"); %>
+<div class="container">
+	<h2 style="margin-top:0;">Remove room:</h2>
+	<form id="removeRoomForm">
+		<div class="form-group">
+			<label for="inputRoom">Room</label>
+			<select class="form-control" id="inputRoom" name="room">
+				<% for(var i=0; i<rooms.length; i++) { %>
+					<% var room = rooms[i]; %>
+					<option value="<%- room.id %>"><%- room.name %></option>
+				<% } %>
+			</select>
+		</div>
+		<button id="submit" type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>
+<%- include("inc/footer"); %>

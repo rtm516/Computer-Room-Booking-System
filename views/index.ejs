@@ -1,0 +1,30 @@
+<%- include("inc/header", {noContent: true}); %>
+<div class="modal fade" id="loginMenu" tabindex="-1" role="dialog" aria-labelledby="loginMenuTitle" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="loginMenuTitle">Login to manage the computer bookings</h4>
+			</div>
+			<div class="modal-body">
+				<form id="loginForm">
+					<div class="form-group">
+						<label for="inputUser">Username</label>
+						<input type="text" class="form-control" id="inputUser" name="user" placeholder="Username">
+					</div>
+					<div class="form-group">
+						<label for="inputPassword">Password</label>
+						<input type="password" class="form-control" id="inputPassword" name="pass" placeholder="Password">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a id="submit" class="btn btn-success" role="button" onclick="submitLogin();">Login</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$('#loginMenu').modal('show');
+    $('#loginMenu').data('bs.modal').options.backdrop = 'static';
+</script>
+<%- include("inc/footer", {noContent: true}); %>

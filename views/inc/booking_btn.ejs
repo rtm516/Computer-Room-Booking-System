@@ -1,0 +1,5 @@
+<% if (lessonsSorted[day] && lessonsSorted[day][lesson]) { %>
+<a class="btn btn-danger btn-block bookBtn" href="/booking/<%- lessonsSorted[day][lesson].id %>">Booked</a>
+<% }else{ %>
+<a class="btn btn-success btn-block bookBtn">Not Booked</a>
+<% } %>

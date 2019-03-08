@@ -1,0 +1,14 @@
+<% if (!user) { %>
+	<%- include("inc/header", {noContent: true}); %>
+<% }else{ %>
+	<%- include("inc/header"); %>
+<% } %>
+<div class="container">
+	<h2><%= title %></h2>
+	<h4><%= desc %></h4>
+</div>
+<% if (!user) { %>
+	<%- include("inc/footer", {noContent: true}); %>
+<% }else{ %>
+	<%- include("inc/footer"); %>
+<% } %>
